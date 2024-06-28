@@ -14,7 +14,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=workflows
-      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - RABBITMQ_URL=amqp://rabbitmq:5672
       - NATS_URL=nats://nats:4222
     volumes:
       - ./libs:/usr/src/app/libs
@@ -51,7 +51,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=virtual-facility
-      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - RABBITMQ_URL=amqp://rabbitmq:5672
       - NATS_URL=nats://nats:4222
     volumes:
       - ./libs:/usr/src/app/libs
@@ -83,6 +83,7 @@ services:
     command: npm run start:dev -- alarms-service
     environment:
       - NATS_URL=nats://nats:4222
+      - RABBITMQ_URL=amqp://rabbitmq:5672
     volumes:
       - ./libs:/usr/src/app/libs
       - ./package.json:/usr/src/app/package.json
@@ -137,6 +138,7 @@ services:
     command: npm run start:dev -- notifications-service
     environment:
       - NATS_URL=nats://nats:4222
+      - RABBITMQ_URL=amqp://rabbitmq:5672
     volumes:
       - ./libs:/usr/src/app/libs
       - ./package.json:/usr/src/app/package.json
